@@ -9,7 +9,7 @@ var database;
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Set up a connection to the MongoDB Client
-MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb-crud', function (err, db) {
+MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb-crud', function(err, db) {
     if (err) {
         return console.log(err);
     } else {
@@ -22,12 +22,18 @@ MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb
 });
 
 // Default path
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
     // res.send('Hello World');
     res.sendFile(__dirname + '/index.html');
 });
 
-app.post('/quotes', function (req, res) {
-    // Elements of the form
-    console.log(req.body);
+app.post('/quotes', function(req, res) {
+    database.collection('quotes').save(req.body, function(err, result) {
+        if (err) {
+            return console.log(err);
+        } else {
+            console.log('Saved the quote to the database.');
+            res.redirect('/');
+        }
+    });
 });
