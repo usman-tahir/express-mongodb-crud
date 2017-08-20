@@ -23,7 +23,9 @@ MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb
 
 // Default path
 app.get('/', function(req, res) {
-    // res.send('Hello World');
+    database.collection('quotes').find().toArray(function(err, results) {
+        console.log(results);
+    });
     res.sendFile(__dirname + '/index.html');
 });
 
