@@ -1,0 +1,23 @@
+{
+  "name": "express-mongodb-crud",
+  "version": "1.0.0",
+  "description": "A CRUD application using MongoDB and Express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/usman-tahir/express-mongodb-crud.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/usman-tahir/express-mongodb-crud/issues"
+  },
+  "homepage": "https://github.com/usman-tahir/express-mongodb-crud#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
