@@ -1,6 +1,9 @@
 
 const express = require('express'),
+    bodyParser = require('body-parser'),
     app = express();
+
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.listen(3000, function() {
     console.log('Listening at http://localhost:3000');
@@ -12,6 +15,7 @@ app.get('/', function (req, res) {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/quotes', function (req, res) {
-    console.log('posted a quote');
+app.post('/quotes', function (req, res) {
+    // Elements of the form
+    console.log(req.body);
 });
