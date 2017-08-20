@@ -7,6 +7,7 @@ const express = require('express'),
 var database;
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.set('view engine', 'ejs');
 
 // Set up a connection to the MongoDB Client
 MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb-crud', function(err, db) {
@@ -23,10 +24,11 @@ MongoClient.connect('mongodb://root:root@ds153113.mlab.com:53113/express-mongodb
 
 // Default path
 app.get('/', function(req, res) {
-    database.collection('quotes').find().toArray(function(err, results) {
-        console.log(results);
+    database.collection('quotes').find().toArray(function(err, result) {
+        console.log(result);
+        res.render('index.ejs', { quotes: result });
     });
-    res.sendFile(__dirname + '/index.html');
+    // res.sendFile(__dirname + '/index.html');
 });
 
 app.post('/quotes', function(req, res) {
