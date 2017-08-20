@@ -11,3 +11,7 @@ app.get('/', function (req, res) {
     // res.send('Hello World');
     res.sendFile(__dirname + '/index.html');
 });
+
+app.get('/quotes', function (req, res) {
+    console.log('posted a quote');
+});
